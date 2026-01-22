@@ -115,18 +115,6 @@ body {
     background: #b71c1c;
 }
 
-.toolbar .eraser-btn {
-    background: #ff6b35;
-}
-
-.toolbar .eraser-btn:hover {
-    background: #e55a24;
-}
-
-.toolbar .eraser-btn.active {
-    background: #ff4722;
-    box-shadow: 0 0 8px rgba(255, 71, 34, 0.5);
-}
 
 /* Canvas */
 .canvas-wrapper {

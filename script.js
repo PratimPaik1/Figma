@@ -3,8 +3,7 @@ const state = {
     elements: [],
     selected: null,
     drag: null,
-    id: 0,
-    eraserActive: false
+    id: 0
 };
 
 const canvas = document.getElementById("canvas");
@@ -12,6 +11,7 @@ const layersList = document.getElementById("layersList");
 const props = document.getElementById("properties");
 
 /* LOCALSTORAGE */
+
 const STORAGE_KEY = "hackdesign_state";
 const THEME_KEY = "hackdesign_theme";
 
@@ -81,34 +81,6 @@ function clearStorage() {
     }
 }
 
-/* ERASER */
-function toggleEraser() {
-    state.eraserActive = !state.eraserActive;
-    const eraserBtn = document.getElementById("eraserBtn");
-
-    if (state.eraserActive) {
-        eraserBtn.classList.add("active");
-        canvas.style.cursor = "not-allowed";
-    } else {
-        eraserBtn.classList.remove("active");
-        canvas.style.cursor = "default";
-    }
-}
-
-function deleteElement(el) {
-    const elementDiv = document.getElementById(el.id);
-    if (elementDiv) {
-        elementDiv.remove();
-    }
-    state.elements = state.elements.filter(e => e !== el);
-    if (state.selected === el) {
-        state.selected = null;
-        updateProps();
-    }
-    updateLayers();
-    saveState();
-}
-
 // Load state and theme on page load
 window.addEventListener("DOMContentLoaded", () => {
     loadTheme();
@@ -154,12 +126,7 @@ function draw(el) {
     }
 
     d.onmousedown = e => {
-        if (state.eraserActive) {
-            e.stopPropagation();
-            deleteElement(el);
-        } else {
-            startDrag(e, el);
-        }
+        startDrag(e, el);
     };
     canvas.appendChild(d);
 }
