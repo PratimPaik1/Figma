@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HackDesign - Visual Design Editor</title>
+
+<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left-panel">
+        <div class="panel-header">Layers</div>
+        <div class="layers-list" id="layersList"></div>
+    </div>
+
+    <div class="canvas-wrapper">
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <button onclick="create('rectangle')">Rectangle</button>
+                <button onclick="create('circle')">Circle</button>
+                <button onclick="create('text')">Text</button>
+                <button onclick="deleteSelected()">Delete</button>
+            </div>
+            <div class="toolbar-right">
+                <button onclick="toggleTheme()" class="theme-btn" id="themeBtn">🌙 Dark</button>
+                <button onclick="exportJSON()" class="export-btn">Export JSON</button>
+                <button onclick="exportHTML()" class="export-btn">Export HTML</button>
+                <button onclick="clearStorage()" class="clear-btn">Clear</button>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <div class="canvas" id="canvas"></div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="panel-header">Properties</div>
+        <div class="properties-content" id="properties">
+            Select an element
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="exportModal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalTitle">Export</div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeExportModal()">Cancel</button>
+            <button class="btn-primary" id="confirmExportBtn" onclick="confirmExport()">Export</button>
+        </div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>
