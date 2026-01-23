@@ -70,10 +70,24 @@ body {
 }
 
 .toolbar-left,
-.toolbar-right {
+.toolbar-right,
+.toolbar-center {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
+}
+
+.toolbar-center {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-primary);
+    letter-spacing: 1px;
 }
 
 .toolbar button {
@@ -359,6 +373,12 @@ body {
     
     .toolbar {
         flex-direction: column;
+    }
+    
+    .toolbar-center {
+        width: 100%;
+        order: -1;
+        margin-bottom: 10px;
     }
     
     .toolbar-left,
